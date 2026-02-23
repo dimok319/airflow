@@ -1,0 +1,34 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+  webserver:
+    image: apache/airflow:2.7.1
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dag:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - E:/:/mnt/e
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+    command: webserver
+  scheduler:
+    image: apache/airflow:2.7.1
+    depends_on:
+      - postgres
+    volumes:
+      - ./dag:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - E:/:/mnt/e
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+    command: scheduler

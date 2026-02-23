@@ -1,0 +1,40 @@
+[2026-02-23T10:53:38.282+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pagination_dag.pagination_task manual__2026-02-23T10:53:36.218577+00:00 [queued]>
+[2026-02-23T10:53:38.290+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pagination_dag.pagination_task manual__2026-02-23T10:53:36.218577+00:00 [queued]>
+[2026-02-23T10:53:38.291+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2026-02-23T10:53:38.406+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): pagination_task> on 2026-02-23 10:53:36.218577+00:00
+[2026-02-23T10:53:38.413+0000] {standard_task_runner.py:57} INFO - Started process 1562 to run task
+[2026-02-23T10:53:38.417+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'pagination_dag', 'pagination_task', 'manual__2026-02-23T10:53:36.218577+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpxx689zqt']
+[2026-02-23T10:53:38.422+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask pagination_task
+[2026-02-23T10:53:38.489+0000] {task_command.py:415} INFO - Running <TaskInstance: pagination_dag.pagination_task manual__2026-02-23T10:53:36.218577+00:00 [running]> on host dfe3fe4d7265
+[2026-02-23T10:53:38.575+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pagination_dag' AIRFLOW_CTX_TASK_ID='pagination_task' AIRFLOW_CTX_EXECUTION_DATE='2026-02-23T10:53:36.218577+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-23T10:53:36.218577+00:00'
+[2026-02-23T10:53:38.718+0000] {logging_mixin.py:151} INFO - Проход 1
+[2026-02-23T10:53:40.843+0000] {logging_mixin.py:151} INFO - Проход 2
+[2026-02-23T10:53:43.028+0000] {logging_mixin.py:151} INFO -     userId  ...                                               body
+0        1  ...  quia et suscipit\nsuscipit recusandae consequu...
+1        1  ...  est rerum tempore vitae\nsequi sint nihil repr...
+2        1  ...  et iusto sed quo iure\nvoluptatem occaecati om...
+3        1  ...  ullam et saepe reiciendis voluptatem adipisci\...
+4        1  ...  repudiandae veniam quaerat sunt sed\nalias aut...
+..     ...  ...                                                ...
+95      10  ...  in non odio excepturi sint eum\nlabore volupta...
+96      10  ...  eum non blanditiis soluta porro quibusdam volu...
+97      10  ...  doloremque ex facilis sit sint culpa\nsoluta a...
+98      10  ...  quo deleniti praesentium dicta non quod\naut e...
+99      10  ...  cupiditate quo est a modi nesciunt soluta\nips...
+
+[100 rows x 4 columns]
+[2026-02-23T10:53:43.604+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag.py", line 51, in run_pagination
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+  File "/usr/local/lib/python3.8/os.py", line 223, in makedirs
+    mkdir(name, mode)
+FileNotFoundError: [Errno 2] No such file or directory: ''
+[2026-02-23T10:53:43.620+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=pagination_dag, task_id=pagination_task, execution_date=20260223T105336, start_date=20260223T105338, end_date=20260223T105343
+[2026-02-23T10:53:43.640+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 3 for task pagination_task ([Errno 2] No such file or directory: ''; 1562)
+[2026-02-23T10:53:43.654+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2026-02-23T10:53:43.670+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
