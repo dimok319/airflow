@@ -4187,3 +4187,17 @@
 [2026-02-23T14:00:30.381+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:00:30.381+0000] {dag.py:2915} INFO - Sync 1 DAGs
 [2026-02-23T14:00:30.392+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:00:30.392+0000] {dag.py:3696} INFO - Setting next_dagrun for pagination_dag to None, run_after=None
 [2026-02-23T14:00:30.410+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dag.py took 0.479 seconds
+[2026-02-23T14:01:00.612+0000] {processor.py:157} INFO - Started process (PID=2205) to work on /opt/airflow/dags/dag.py
+[2026-02-23T14:01:00.614+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2026-02-23T14:01:00.615+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:00.615+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2026-02-23T14:01:00.885+0000] {processor.py:839} INFO - DAG(s) dict_keys(['pagination_dag']) retrieved from /opt/airflow/dags/dag.py
+[2026-02-23T14:01:00.914+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:00.914+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-02-23T14:01:00.925+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:00.925+0000] {dag.py:3696} INFO - Setting next_dagrun for pagination_dag to None, run_after=None
+[2026-02-23T14:01:00.944+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dag.py took 0.336 seconds
+[2026-02-23T14:01:31.153+0000] {processor.py:157} INFO - Started process (PID=2211) to work on /opt/airflow/dags/dag.py
+[2026-02-23T14:01:31.154+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2026-02-23T14:01:31.155+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:31.155+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2026-02-23T14:01:31.460+0000] {processor.py:839} INFO - DAG(s) dict_keys(['pagination_dag']) retrieved from /opt/airflow/dags/dag.py
+[2026-02-23T14:01:31.496+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:31.496+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-02-23T14:01:31.514+0000] {logging_mixin.py:151} INFO - [2026-02-23T14:01:31.513+0000] {dag.py:3696} INFO - Setting next_dagrun for pagination_dag to None, run_after=None
+[2026-02-23T14:01:31.542+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dag.py took 0.394 seconds
