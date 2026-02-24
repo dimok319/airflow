@@ -7,9 +7,9 @@ import requests as re
 from sqlalchemy import create_engine
 import os
 
-# === Telegram ===
+# Telega
 TELEGRAM_TOKEN = "8012518868:AAEr1ZV_6PXTh9nv4-ce4oH21SyiAkuZ1rY"
-CHAT_ID = "6376001761"  # замените на ваш chat_id
+CHAT_ID = "6376001761"
 
 
 def send_telegram(msg):
@@ -46,14 +46,14 @@ def run_pagination():
 
         df = pd.DataFrame(items)
 
-        # Переименовываем колонку userId в user_id для БД
+        
         df = df.rename(columns={'userId': 'user_id'})
 
         print(f"Получено записей: {len(df)}")
         print(df.head())
 
-        # === ПОДКЛЮЧЕНИЕ К SQLITE НА ДИСКЕ E: ===
-        # Путь к вашей БД внутри контейнера (диск E смонтирован в /mnt/e)
+        # ПОДКЛЮЧЕНИЕ К sql
+        
         db_path = "/mnt/e/Тренировка.db"
 
         # Проверяем, доступен ли файл
