@@ -1,15 +1,39 @@
-version: '3'
 services:
-  postgres:
+
+  # -----------------------------
+  # Postgres для Airflow
+  # -----------------------------
+  airflow-postgres:
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+    volumes:
+      - airflow_pg_data:/var/lib/postgresql/data
+
+  # -----------------------------
+  # Postgres для твоих данных
+  # -----------------------------
+  target-postgres:
+    image: postgres:15
+    container_name: my-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"     # ← ВАЖНО: открываем порт наружу
+    volumes:
+      - target_pg_data:/var/lib/postgresql/data
+
+  # -----------------------------
+  # Airflow Webserver
+  # -----------------------------
   webserver:
     image: apache/airflow:2.7.1
     depends_on:
-      - postgres
+      - airflow-postgres
     ports:
       - "8080:8080"
     volumes:
@@ -17,18 +41,26 @@ services:
       - ./logs:/opt/airflow/logs
       - E:/:/mnt/e
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres:5432/airflow
     command: webserver
+
+  # -----------------------------
+  # Airflow Scheduler
+  # -----------------------------
   scheduler:
     image: apache/airflow:2.7.1
     depends_on:
-      - postgres
+      - airflow-postgres
     volumes:
       - ./dag:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - E:/:/mnt/e
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres:5432/airflow
     command: scheduler
+
+volumes:
+  airflow_pg_data:
+  target_pg_data:

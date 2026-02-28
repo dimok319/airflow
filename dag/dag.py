@@ -7,9 +7,9 @@ import requests as re
 from sqlalchemy import create_engine
 import os
 
-# === Telegram ===
+# Telega
 TELEGRAM_TOKEN = "8012518868:AAEr1ZV_6PXTh9nv4-ce4oH21SyiAkuZ1rY"
-CHAT_ID = "6376001761"  # замените на ваш chat_id
+CHAT_ID = "6376001761"
 
 
 def send_telegram(msg):
@@ -46,21 +46,20 @@ def run_pagination():
 
         df = pd.DataFrame(items)
 
-        # Переименовываем колонку userId в user_id для БД
         df = df.rename(columns={'userId': 'user_id'})
 
         print(f"Получено записей: {len(df)}")
         print(df.head())
 
-        # === ПОДКЛЮЧЕНИЕ К SQLITE НА ДИСКЕ E: ===
-        # Путь к вашей БД внутри контейнера (диск E смонтирован в /mnt/e)
+        # ПОДКЛЮЧЕНИЕ К sql
+
         db_path = "/mnt/e/Тренировка.db"
 
         # Проверяем, доступен ли файл
         if os.path.exists(db_path):
-            print(f"✅ База данных найдена: {db_path}")
+            print(f"База данных найдена: {db_path}")
         else:
-            print(f"⚠️ База данных не найдена, будет создана новая: {db_path}")
+            print(f"База данных не найдена, будет создана новая: {db_path}")
 
         # Создаем подключение к SQLite
         engine = create_engine(f'sqlite:///{db_path}')
@@ -68,16 +67,16 @@ def run_pagination():
         # Загружаем данные в таблицу posts (создаст если нет)
         df.to_sql('posts', engine, if_exists='append', index=False)
 
-        print(f"✅ Данные загружены в таблицу posts")
+        print(f"Данные загружены в таблицу posts")
 
         # Проверяем, сколько записей стало
         result = pd.read_sql("SELECT COUNT(*) as count FROM posts", engine)
         total = result['count'].iloc[0]
 
-        send_telegram(f"✅ Загружено {len(df)} записей\nВсего в таблице posts: {total}")
+        send_telegram(f"Загружено {len(df)} записей\nВсего в таблице posts: {total}")
 
     except Exception as e:
-        error_msg = f"❌ Ошибка: {str(e)}"
+        error_msg = f"Ошибка: {str(e)}"
         print(error_msg)
         try:
             send_telegram(error_msg)
