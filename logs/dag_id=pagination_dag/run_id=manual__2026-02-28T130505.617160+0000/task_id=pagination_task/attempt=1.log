@@ -1,0 +1,26 @@
+[2026-02-28T13:05:07.059+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pagination_dag.pagination_task manual__2026-02-28T13:05:05.617160+00:00 [queued]>
+[2026-02-28T13:05:07.070+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pagination_dag.pagination_task manual__2026-02-28T13:05:05.617160+00:00 [queued]>
+[2026-02-28T13:05:07.071+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2026-02-28T13:05:07.087+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): pagination_task> on 2026-02-28 13:05:05.617160+00:00
+[2026-02-28T13:05:07.095+0000] {standard_task_runner.py:57} INFO - Started process 308 to run task
+[2026-02-28T13:05:07.101+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'pagination_dag', 'pagination_task', 'manual__2026-02-28T13:05:05.617160+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpq3nxceva']
+[2026-02-28T13:05:07.105+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask pagination_task
+[2026-02-28T13:05:07.182+0000] {task_command.py:415} INFO - Running <TaskInstance: pagination_dag.pagination_task manual__2026-02-28T13:05:05.617160+00:00 [running]> on host a3c1a496155a
+[2026-02-28T13:05:07.461+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pagination_dag' AIRFLOW_CTX_TASK_ID='pagination_task' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T13:05:05.617160+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T13:05:05.617160+00:00'
+[2026-02-28T13:05:07.595+0000] {logging_mixin.py:151} INFO - Проход 1
+[2026-02-28T13:05:09.716+0000] {logging_mixin.py:151} INFO - Проход 2
+[2026-02-28T13:05:11.842+0000] {logging_mixin.py:151} INFO - Получено записей: 100
+[2026-02-28T13:05:11.854+0000] {logging_mixin.py:151} INFO -    user_id  ...                                               body
+0        1  ...  quia et suscipit\nsuscipit recusandae consequu...
+1        1  ...  est rerum tempore vitae\nsequi sint nihil repr...
+2        1  ...  et iusto sed quo iure\nvoluptatem occaecati om...
+3        1  ...  ullam et saepe reiciendis voluptatem adipisci\...
+4        1  ...  repudiandae veniam quaerat sunt sed\nalias aut...
+
+[5 rows x 4 columns]
+[2026-02-28T13:05:11.855+0000] {logging_mixin.py:151} INFO - База данных найдена: /mnt/e/Тренировка.db
+[2026-02-28T13:05:12.146+0000] {logging_mixin.py:151} INFO - Данные загружены в таблицу posts
+[2026-02-28T13:05:12.744+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-28T13:05:12.755+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=pagination_dag, task_id=pagination_task, execution_date=20260228T130505, start_date=20260228T130507, end_date=20260228T130512
+[2026-02-28T13:05:12.814+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-28T13:05:12.828+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

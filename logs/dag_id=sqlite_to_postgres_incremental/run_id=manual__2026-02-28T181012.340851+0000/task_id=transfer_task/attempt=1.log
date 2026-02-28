@@ -1,0 +1,21 @@
+[2026-02-28T18:10:13.950+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sqlite_to_postgres_incremental.transfer_task manual__2026-02-28T18:10:12.340851+00:00 [queued]>
+[2026-02-28T18:10:13.958+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sqlite_to_postgres_incremental.transfer_task manual__2026-02-28T18:10:12.340851+00:00 [queued]>
+[2026-02-28T18:10:13.959+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2026-02-28T18:10:13.972+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): transfer_task> on 2026-02-28 18:10:12.340851+00:00
+[2026-02-28T18:10:13.979+0000] {standard_task_runner.py:57} INFO - Started process 212 to run task
+[2026-02-28T18:10:13.983+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'sqlite_to_postgres_incremental', 'transfer_task', 'manual__2026-02-28T18:10:12.340851+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/transfer_date_of_bd.py', '--cfg-path', '/tmp/tmp_inw9d1v']
+[2026-02-28T18:10:13.986+0000] {standard_task_runner.py:85} INFO - Job 10: Subtask transfer_task
+[2026-02-28T18:10:14.043+0000] {task_command.py:415} INFO - Running <TaskInstance: sqlite_to_postgres_incremental.transfer_task manual__2026-02-28T18:10:12.340851+00:00 [running]> on host 79d60886538f
+[2026-02-28T18:10:14.291+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='sqlite_to_postgres_incremental' AIRFLOW_CTX_TASK_ID='transfer_task' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T18:10:12.340851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T18:10:12.340851+00:00'
+[2026-02-28T18:10:14.863+0000] {logging_mixin.py:151} INFO - Обработка таблицы: yes
+[2026-02-28T18:10:14.886+0000] {logging_mixin.py:151} INFO - Обработка таблицы: all_sale1
+[2026-02-28T18:10:14.896+0000] {logging_mixin.py:151} INFO - Обработка таблицы: dop_data
+[2026-02-28T18:10:14.905+0000] {logging_mixin.py:151} INFO - Обработка таблицы: new
+[2026-02-28T18:10:14.919+0000] {logging_mixin.py:151} INFO - Обработка таблицы: sales_data
+[2026-02-28T18:10:14.928+0000] {logging_mixin.py:151} INFO - Обработка таблицы: all_sale2
+[2026-02-28T18:10:14.938+0000] {logging_mixin.py:151} INFO - Обработка таблицы: good
+[2026-02-28T18:10:14.952+0000] {logging_mixin.py:151} INFO - Обработка таблицы: posts
+[2026-02-28T18:10:15.515+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-28T18:10:15.524+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=sqlite_to_postgres_incremental, task_id=transfer_task, execution_date=20260228T181012, start_date=20260228T181013, end_date=20260228T181015
+[2026-02-28T18:10:15.562+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-28T18:10:15.578+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
