@@ -98,7 +98,7 @@ def transfer_sqlite_to_postgres():
         raise
 
 
-# ================= DAG =================
+# DAG
 with DAG(
     dag_id="sqlite_to_postgres_incremental",
     start_date=datetime(2024, 1, 1),
