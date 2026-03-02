@@ -24,7 +24,7 @@ def send_telegram(msg):
 # ETL 
 def transfer_sqlite_to_postgres():
 
-    send_telegram("🚀 Старт DAG: sqlite_to_postgres_incremental")
+    send_telegram(" Старт DAG: sqlite_to_postgres_incremental")
 
     try:
         sqlite_path = "/mnt/e/ТРенировка.db"
