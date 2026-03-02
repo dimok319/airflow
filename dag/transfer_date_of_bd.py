@@ -7,7 +7,7 @@ import sqlite3
 from sqlalchemy import create_engine, text
 import os
 
-# ================= TELEGRAM =================
+# TELEGRAM 
 TELEGRAM_TOKEN = "8012518868:AAEr1ZV_6PXTh9nv4-ce4oH21SyiAkuZ1rY"
 CHAT_ID = "6376001761"
 
@@ -21,7 +21,7 @@ def send_telegram(msg):
         print(f"Ошибка отправки в Telegram: {e}")
 
 
-# ================= ETL =================
+# ETL 
 def transfer_sqlite_to_postgres():
 
     send_telegram("🚀 Старт DAG: sqlite_to_postgres_incremental")
@@ -80,16 +80,16 @@ def transfer_sqlite_to_postgres():
                 pass
 
         success_msg = (
-            f"✅ Инкрементальная загрузка завершена\n"
-            f"📂 Обработано таблиц: {processed_tables}\n"
-            f"➕ Добавлено строк: {total_rows}\n"
-            f"📊 Всего строк в Postgres: {total_pg_rows}"
+            f" Инкрементальная загрузка завершена\n"
+            f" Обработано таблиц: {processed_tables}\n"
+            f" Добавлено строк: {total_rows}\n"
+            f" Всего строк в Postgres: {total_pg_rows}"
         )
 
         send_telegram(success_msg)
 
     except Exception as e:
-        error_msg = f"❌ Ошибка ETL: {str(e)}"
+        error_msg = f" Ошибка ETL: {str(e)}"
         print(error_msg)
         try:
             send_telegram(error_msg)
